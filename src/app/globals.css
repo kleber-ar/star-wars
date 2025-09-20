@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --color-dark: #25262b;
+  --color-secondary: #373a40;
+  --color-yellow: #fcc419;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to top, darkblue, black);
+}
