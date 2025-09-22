@@ -9,6 +9,8 @@ export default defineConfig({
       provider: "v8", // pode ser 'istanbul' também
       reporter: ["text", "json", "html"],
       reportsDirectory: "./coverage",
+      include: ["src/**/*.{js,ts,jsx,tsx}"],
+      exclude: ["src/app/layout.tsx", "src/context/PlanetsContext"],
     },
   },
 });
