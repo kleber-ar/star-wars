@@ -18,5 +18,5 @@ body {
   background: linear-gradient(to top, darkblue, black);
   background-repeat: no-repeat;
   color: white;
-  height: 100dvh;
+  min-height: 100dvh;
 }
