@@ -17,9 +17,8 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
       "suspicious": {
-        "noUnknownAtRules": "off"
+        "noExplicitAny": "off"
       }
     },
     "domains": {
@@ -30,7 +29,7 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": "off"
       }
     }
   }
