@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --color-dark: #25262b;
@@ -14,4 +16,7 @@
 
 body {
   background: linear-gradient(to top, darkblue, black);
+  background-repeat: no-repeat;
+  color: white;
+  height: 100dvh;
 }

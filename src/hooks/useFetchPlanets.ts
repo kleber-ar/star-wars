@@ -1,4 +1,5 @@
-// src/hooks/useFetchPlanets.ts
+"use client";
+
 import { useEffect, useState } from "react";
 import type { PlanetType } from "../context/PlanetsContext";
 
