@@ -1,6 +1,6 @@
 "use client";
 
-import { usePlanets } from "@/context/PlanetsContext";
+import { usePlanets } from "../context/PlanetsContext";
 
 export default function FilterInput() {
   const { filter, setFilter } = usePlanets();
@@ -8,6 +8,7 @@ export default function FilterInput() {
   return (
     <input
       type="text"
+      placeholder="Filtrar planetas"
       value={filter}
       onChange={(e) => setFilter(e.target.value)}
     />

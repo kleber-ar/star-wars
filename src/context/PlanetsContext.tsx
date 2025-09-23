@@ -1,6 +1,6 @@
 "use client";
 
-import { useFetchPlanets } from "@/hooks/useFetchPlanets";
+import { useFetchPlanets } from "../hooks/useFetchPlanets";
 import {
   createContext,
   type ReactNode,

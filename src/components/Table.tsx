@@ -1,6 +1,6 @@
 "use client";
 
-import { usePlanets } from "@/context/PlanetsContext";
+import { usePlanets } from "../context/PlanetsContext";
 
 export default function Table() {
   const { planets, loading, error } = usePlanets();
