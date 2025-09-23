@@ -1,12 +1,13 @@
 "use client";
 
-import { useFetchPlanets } from "../hooks/useFetchPlanets";
+import { usePlanets } from "@/context/PlanetsContext";
 
 export default function Table() {
-  const { planets, loading, error } = useFetchPlanets();
+  const { planets, loading, error } = usePlanets();
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
+  if (!planets.length) return <p>Nenhum planeta encontrado.</p>;
 
   const headers = Object.keys(planets[0]);
 
@@ -24,9 +25,7 @@ export default function Table() {
           {planets.map((planet) => (
             <tr key={planet.name}>
               {headers.map((header) => (
-                <td key={header}>
-                  {(planet as Record<string, string | string[]>)[header]}
-                </td>
+                <td key={header}>{(planet as any)[header]}</td>
               ))}
             </tr>
           ))}

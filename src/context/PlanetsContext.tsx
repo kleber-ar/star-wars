@@ -1,4 +1,13 @@
-import { createContext, type ReactNode, useContext, useState } from "react";
+"use client";
+
+import { useFetchPlanets } from "@/hooks/useFetchPlanets";
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export type PlanetType = {
   name: string;
@@ -18,15 +27,31 @@ export type PlanetType = {
 
 type PlanetsContextType = {
   planets: PlanetType[];
+  loading: boolean;
+  error: string | null;
+  filter: string;
+  setFilter: (filter: string) => void;
 };
 
-const PlanetsContext = createContext<PlanetsContextType>({ planets: [] });
+const PlanetsContext = createContext<PlanetsContextType | null>(null);
 
 export const PlanetsProvider = ({ children }: { children: ReactNode }) => {
-  const [planets] = useState<PlanetType[]>([]);
+  const { planets: fetchedPlanets, loading, error } = useFetchPlanets();
+  const [planets, setPlanets] = useState<PlanetType[]>([]);
+  const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    setPlanets(fetchedPlanets);
+  }, [fetchedPlanets]);
+
+  const filteredPlanets = planets.filter((planet) =>
+    planet.name.toLowerCase().includes(filter.toLowerCase()),
+  );
 
   return (
-    <PlanetsContext.Provider value={{ planets }}>
+    <PlanetsContext.Provider
+      value={{ planets: filteredPlanets, loading, error, filter, setFilter }}
+    >
       {children}
     </PlanetsContext.Provider>
   );
