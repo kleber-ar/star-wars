@@ -1,3 +1,4 @@
+import NumericFilters from "@/components/NumericFilters";
 import FilterInput from "../components/FilterInput";
 import Table from "../components/Table";
 
@@ -8,6 +9,7 @@ export default function Home() {
         Planetas Star Wars
       </h1>
       <FilterInput />
+      <NumericFilters />
       <Table />
     </div>
   );
