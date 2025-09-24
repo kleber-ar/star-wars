@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useFetchPlanets } from "../hooks/useFetchPlanets";
 import {
   createContext,

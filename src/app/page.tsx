@@ -1,4 +1,5 @@
-import NumericFilters from "@/components/NumericFilters";
+import React from "react";
+import NumericFilters from "../components/NumericFilters";
 import FilterInput from "../components/FilterInput";
 import Table from "../components/Table";
 

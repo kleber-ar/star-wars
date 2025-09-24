@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import { usePlanets, type NumericFilter } from "../context/PlanetsContext";
 
@@ -35,6 +36,7 @@ export default function NumericFilters() {
     <div className="flex flex-col gap-2 mb-4">
       <div className="flex gap-2">
         <select
+          data-testid="column-filter"
           value={column}
           onChange={(e) =>
             setColumn(e.target.value as (typeof columns)[number])
@@ -62,6 +64,7 @@ export default function NumericFilters() {
         </select>
 
         <input
+          data-testid="value-filter"
           type="number"
           value={value}
           onChange={(e) => setValue(Number(e.target.value))}
