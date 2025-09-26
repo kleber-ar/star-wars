@@ -42,6 +42,13 @@ type PlanetsContextType = {
   addNumericFilter: (filter: NumericFilter) => void;
   removeNumericFilter: (index: number) => void;
   clearNumericFilters: () => void;
+  order: Order;
+  setOrder: (order: Order) => void;
+};
+
+type Order = {
+  column: keyof PlanetType;
+  sort: "ASC" | "DESC";
 };
 
 const PlanetsContext = createContext<PlanetsContextType | null>(null);
@@ -51,6 +58,7 @@ export const PlanetsProvider = ({ children }: { children: ReactNode }) => {
   const [planets, setPlanets] = useState<PlanetType[]>([]);
   const [filter, setFilter] = useState("");
   const [numericFilters, setNumericFilters] = useState<NumericFilter[]>([]);
+  const [order, setOrder] = useState<Order>({ column: "name", sort: "ASC" });
 
   useEffect(() => {
     setPlanets(fetchedPlanets);
@@ -77,7 +85,16 @@ export const PlanetsProvider = ({ children }: { children: ReactNode }) => {
             return true;
         }
       }),
-    );
+    )
+    .sort((a, b) => {
+      const { column, sort } = order;
+
+      const aValue = a[column] === "unknown" ? Infinity : Number(a[column]);
+      const bValue = b[column] === "unknown" ? Infinity : Number(b[column]);
+
+      if (sort === "ASC") return aValue - bValue;
+      return bValue - aValue;
+    });
 
   const addNumericFilter = (newFilter: NumericFilter) => {
     // Verifica se já existe um filtro igual
@@ -113,6 +130,8 @@ export const PlanetsProvider = ({ children }: { children: ReactNode }) => {
         addNumericFilter,
         removeNumericFilter,
         clearNumericFilters,
+        order,
+        setOrder,
       }}
     >
       {children}
