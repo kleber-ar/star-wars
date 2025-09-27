@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { usePlanets } from "../context/PlanetsContext";
 
 export default function FilterInput() {

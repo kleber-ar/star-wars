@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { PlanetType } from "../context/PlanetsContext";
+import type { PlanetType } from "../types";
 
 export const useFetchPlanets = () => {
   const [planets, setPlanets] = useState<PlanetType[]>([]);

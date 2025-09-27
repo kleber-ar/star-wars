@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
 import { useState } from "react";
-import { usePlanets, type NumericFilter } from "../context/PlanetsContext";
+import { usePlanets } from "../context/PlanetsContext";
+import type { NumericFilter } from "../types";
 
 const columns = [
   "population",
