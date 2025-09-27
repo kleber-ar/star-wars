@@ -23,8 +23,8 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          {planets.map((planet) => (
-            <tr key={planet.name}>
+          {planets.map((planet, index) => (
+            <tr key={index}>
               {headers.map((header) => (
                 <td key={header}>{(planet as any)[header]}</td>
               ))}

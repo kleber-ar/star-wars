@@ -20,6 +20,11 @@ const mockFetchPlanetsSuccess = () => {
               population: "2000000000",
             },
             { name: "Naboo", climate: "temperate", population: "4500000000" },
+            {
+              name: "unknown",
+              climate: "unknown",
+              population: "unknown",
+            },
           ],
         }),
     }),
@@ -274,6 +279,41 @@ describe("App Testes de integração", () => {
       expect(
         screen.queryByText("population maior que 1000000"),
       ).not.toBeInTheDocument();
+    });
+  });
+
+  it("Sorts planets ASC and DESC without testid", async () => {
+    const { user } = renderWithRouterAndContext(<Home />);
+
+    const sortSelect = screen.getByTestId("column-sort");
+    const sortAsc = screen.getByTestId("column-sort-input-asc");
+    const sortDesc = screen.getByTestId("column-sort-input-desc");
+    const sortButton = screen.getByTestId("column-sort-button");
+
+    // Sort ASC by diameter
+    await user.selectOptions(sortSelect, "diameter");
+    await user.click(sortAsc);
+    await user.click(sortButton);
+
+    await waitFor(() => {
+      const rows = document.querySelectorAll("tbody tr");
+      const firstPlanetName = rows[0].querySelector("td")?.textContent;
+      expect(firstPlanetName).toBe("Tatooine"); // menor
+    });
+
+    // Sort DESC by population
+    await user.selectOptions(sortSelect, "population");
+    await user.click(sortDesc);
+    await user.click(sortButton);
+
+    await waitFor(() => {
+      const rows = document.querySelectorAll("tbody tr");
+      const firstPlanetName = rows[0].querySelector("td")?.textContent;
+      const lastPlanetName =
+        rows[rows.length - 1].querySelector("td")?.textContent;
+
+      expect(firstPlanetName).toBe("unknown");
+      expect(lastPlanetName).toBe("Tatooine");
     });
   });
 });
