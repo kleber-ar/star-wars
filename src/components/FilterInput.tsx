@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { usePlanets } from "../context/PlanetsContext";
 
 export default function FilterInput() {
@@ -7,6 +8,7 @@ export default function FilterInput() {
 
   return (
     <input
+      className="m-[15px]"
       type="text"
       placeholder="Filtrar planetas"
       value={filter}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { usePlanets } from "../context/PlanetsContext";
 import type { NumericFilter } from "../types";
 
@@ -33,8 +33,8 @@ export default function NumericFilters() {
   };
 
   return (
-    <div className="flex flex-col gap-2 mb-4">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-[10px] mb-4">
+      <div className="flex gap-[20px]">
         <select
           data-testid="column-filter"
           value={column}
@@ -44,7 +44,7 @@ export default function NumericFilters() {
         >
           {columns.map((col) => (
             <option key={col} value={col}>
-              {col}
+              {col.replace("_", " ")}
             </option>
           ))}
         </select>
@@ -64,47 +64,48 @@ export default function NumericFilters() {
         </select>
 
         <input
+          className="w-[150px]"
           data-testid="value-filter"
           type="number"
-          value={value}
-          onChange={(e) => setValue(Number(e.target.value))}
+          value={value > 0 ? value : 0}
+          onChange={(e) => {
+            const newValue = Number(e.target.value);
+            setValue(newValue < 0 ? 0 : newValue);
+          }}
           placeholder="Valor"
         />
 
-        <button
-          type="button"
-          onClick={handleAddFilter}
-          className="bg-blue-500 text-white px-2 rounded"
-        >
+        <button className="filter" type="button" onClick={handleAddFilter}>
           Filtrar
         </button>
       </div>
 
       {/* Lista de filtros aplicados */}
       {numericFilters.length > 0 && (
-        <div className="flex gap-2 flex-wrap mt-2">
-          {numericFilters.map((filter, index) => (
-            <span
-              key={index}
-              className="bg-gray-200 px-2 py-1 rounded flex items-center gap-1"
-            >
-              {filter.column} {filter.comparison} {filter.value}
-              <button
-                type="button"
-                onClick={() => removeNumericFilter(index)}
-                className="text-red-500 font-bold"
-              >
-                x
-              </button>
-            </span>
-          ))}
+        <div className="flex-col">
           <button
             type="button"
             onClick={clearNumericFilters}
-            className="bg-red-500 text-white px-2 rounded"
+            className="clearAll mt-[20px]"
           >
             Limpar todos
           </button>
+          {numericFilters.map((filter, index) => (
+            <span
+              key={index}
+              className=" w-[245px] bg-gray-200 border-b pb-[10px] flex  justify-between items-center gap-[10px] m-[10px]"
+            >
+              {filter.column.replace("_", " ")} {filter.comparison}{" "}
+              {filter.value}
+              <button
+                type="button"
+                onClick={() => removeNumericFilter(index)}
+                className="x"
+              >
+                X
+              </button>
+            </span>
+          ))}
         </div>
       )}
     </div>

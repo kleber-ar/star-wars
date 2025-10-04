@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { usePlanets } from "../context/PlanetsContext";
 
 const OrderFilter = () => {
@@ -13,17 +13,17 @@ const OrderFilter = () => {
   };
 
   return (
-    <div>
+    <div className="flex gap-[20px] mb-[20px] mt-[20px]">
       <select
         data-testid="column-sort"
         value={column}
         onChange={(e) => setColumn(e.target.value)}
       >
         <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
+        <option value="orbital_period">orbital period</option>
         <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        <option value="rotation_period">rotation period</option>
+        <option value="surface_water">surface water</option>
       </select>
 
       <label>

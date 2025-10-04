@@ -47,7 +47,7 @@ describe("App Testes de integração", () => {
     mockFetchPlanetsSuccess();
     renderWithRouterAndContext(<Home />);
 
-    expect(screen.getByText("Planetas Star Wars")).toBeInTheDocument();
+    expect(screen.getByAltText("logo")).toBeInTheDocument();
 
     await waitFor(() => {
       expect(screen.getByText("Tatooine")).toBeInTheDocument();

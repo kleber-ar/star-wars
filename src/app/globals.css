@@ -20,3 +20,59 @@ body {
   color: white;
   min-height: 100dvh;
 }
+
+input {
+  border: 1px solid #555;
+  background-color: var(--color-dark);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 400px;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 2px rgba(252, 196, 25, 0.5);
+}
+
+select,
+button {
+  border: 1px solid #555;
+  background-color: #373a40;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.filter:hover {
+  font-weight: bold;
+  background-color: green;
+  outline: none;
+}
+
+.x:hover {
+  font-weight: bold;
+  color: black;
+  background-color: var(--color-yellow);
+  outline: none;
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 2px rgba(252, 196, 25, 0.5);
+}
+
+.clearAll:hover {
+  font-weight: bold;
+  background-color: red;
+  outline: none;
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 2px rgba(252, 196, 25, 0.5);
+}

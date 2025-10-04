@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { usePlanets } from "../context/PlanetsContext";
 
 export default function Table() {
@@ -12,12 +13,14 @@ export default function Table() {
   const headers = Object.keys(planets[0]);
 
   return (
-    <div className="overflow-auto">
+    <div className="overflow-auto m-[20px]">
       <table border={1} cellPadding={5} cellSpacing={0}>
         <thead>
           <tr>
             {headers.map((header) => (
-              <th key={header}>{header}</th>
+              <th className="p-[10px]" key={header}>
+                {header.replace("_", " ")}
+              </th>
             ))}
           </tr>
         </thead>

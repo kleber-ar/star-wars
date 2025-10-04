@@ -16,13 +16,23 @@ export default function Home() {
           src={backShape}
           alt="backShape"
           width={500}
+          height={500}
           className="absolute -z-1"
         />
-        <Image src={logo} alt="backShape" width={200} className="mb-[120px]" />
+        <Image
+          src={logo}
+          alt="logo"
+          width={200}
+          height={200}
+          className="mb-[120px]"
+        />
       </div>
-      <FilterInput />
-      <NumericFilters />
-      <OrderFilter />
+      <hr className="mt-[-25px]" />
+      <div className="p-[10px] mb-[20px]">
+        <FilterInput />
+        <OrderFilter />
+        <NumericFilters />
+      </div>
       <Table />
     </div>
   );
