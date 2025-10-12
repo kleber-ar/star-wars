@@ -8,7 +8,7 @@ export default function FilterInput() {
 
   return (
     <input
-      className="m-[15px]"
+      className="m-[8px]"
       type="text"
       placeholder="Filtrar planetas"
       value={filter}

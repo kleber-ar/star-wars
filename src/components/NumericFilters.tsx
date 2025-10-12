@@ -33,8 +33,8 @@ export default function NumericFilters() {
   };
 
   return (
-    <div className="flex flex-col gap-[10px] mb-4">
-      <div className="flex gap-[20px]">
+    <div className="flex flex-col flex-wrap gap-[10px] mb-4">
+      <div className="flex flex-wrap gap-[20px]">
         <select
           data-testid="column-filter"
           value={column}

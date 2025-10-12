@@ -13,8 +13,9 @@ const OrderFilter = () => {
   };
 
   return (
-    <div className="flex gap-[20px] mb-[20px] mt-[20px]">
+    <div className="flex flex-wrap gap-[12px] mb-[20px] mt-[20px]">
       <select
+        className="mb-[18px]"
         data-testid="column-sort"
         value={column}
         onChange={(e) => setColumn(e.target.value)}

@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import backShape from "../../public/grafismo-topo.svg";
 import logo from "../../public/logo-star wars.svg";
+import PlanetCards from "@/components/PlanetCards";
 
 export default function Home() {
   return (
@@ -33,7 +34,12 @@ export default function Home() {
         <OrderFilter />
         <NumericFilters />
       </div>
-      <Table />
+      <div className="hidden [@media(min-width:601px)]:block">
+        <Table />
+      </div>
+      <div className="block [@media(min-width:601px)]:hidden">
+        <PlanetCards />
+      </div>
     </div>
   );
 }
